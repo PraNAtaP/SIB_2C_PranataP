@@ -23,6 +23,4 @@
             <a href="index.php?action=tenure_stats" class="nav-link">Statistik Masa Kerja</a>
             <a href="index.php?action=refresh" class="nav-link">Refresh Dashboard</a>
         </nav>
-        <main class="main-content"></main>
-    </div>
-</body>
+        <main class="main-content"></main></main>
