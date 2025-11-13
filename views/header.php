@@ -21,6 +21,8 @@
             <a href="index.php?action=department_stats" class="nav-link">Statistik Departemen</a>
             <a href="index.php?action=salary_stats" class="nav-link">Statistik Gaji</a>
             <a href="index.php?action=tenure_stats" class="nav-link">Statistik Masa Kerja</a>
+            <a href="index.php?action=overview" class="nav-link">Overview Karyawan</a>
             <a href="index.php?action=refresh" class="nav-link">Refresh Dashboard</a>
         </nav>
-        <main class="main-content"></main></main>
+        <main class="main-content"></main>
+        </main>

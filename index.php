@@ -103,6 +103,11 @@ switch ($action) {
         include 'views/tenure_stats.php';
         break;
 
+    case 'overview':
+        $stats = $employeeModel->getEmployeesOverview();
+        include 'views/employee_overview.php';
+        break;
+
     default:
         $dashboard = $employeeModel->getDashboardSummary();
         include 'views/dashboard.php';
