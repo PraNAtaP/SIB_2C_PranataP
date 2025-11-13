@@ -124,5 +124,36 @@ class EmployeeModel {
         $stmt->execute();
         return $stmt;
     }
+
+    // Method 11: Menampilkan Tenure Stats
+    public function getTenureStats()
+    {
+        $query = "SELECT 
+                tenure_level,
+                COUNT(*) AS total_employees,
+                ROUND(AVG(salary), 2) AS avg_salary,
+                SUM(salary) AS total_salary_budget
+                FROM (
+                    SELECT 
+                        CASE 
+                            WHEN EXTRACT(YEAR FROM AGE(CURRENT_DATE, hire_date)) < 1 THEN 'Junior'
+                            WHEN EXTRACT(YEAR FROM AGE(CURRENT_DATE, hire_date)) BETWEEN 1 AND 3 THEN 'Middle'
+                            ELSE 'Senior'
+                        END AS tenure_level,
+                        salary
+                    FROM employees
+                ) AS sub
+                GROUP BY tenure_level
+                ORDER BY 
+                    CASE tenure_level
+                        WHEN 'Junior' THEN 1
+                        WHEN 'Middle' THEN 2
+                        WHEN 'Senior' THEN 3
+                    END";
+
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt;
+    }
 }
 ?>
