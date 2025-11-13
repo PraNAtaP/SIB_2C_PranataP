@@ -1,4 +1,5 @@
 <?php
+
 /**
  * FILE: index.php
  * FUNGSI: Controller utama yang menangani semua request
@@ -17,7 +18,7 @@ $employeeModel = new EmployeeModel($db);
 $action = isset($_GET['action']) ? $_GET['action'] : 'dashboard';
 
 switch ($action) {
-    
+
     case 'dashboard':
         $dashboard = $employeeModel->getDashboardSummary();
         include 'views/dashboard.php';
@@ -92,9 +93,13 @@ switch ($action) {
         header("Location: index.php?action=dashboard&message=refreshed");
         break;
 
+    case 'salary_stats':
+        $stats = $employeeModel->getSalaryStat();
+        include 'views/salary_stats.php';
+        break;
+
     default:
         $dashboard = $employeeModel->getDashboardSummary();
         include 'views/dashboard.php';
         break;
 }
-?>

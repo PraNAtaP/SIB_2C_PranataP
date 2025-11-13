@@ -109,5 +109,20 @@ class EmployeeModel {
         $stmt = $this->conn->prepare($query);
         return $stmt->execute();
     }
+    
+    // METHOD 10: Menampilkan Rata-rata gaji, gaji tertinggi, gaji terendah per departemen
+    public function getSalaryStat(): mixed
+    {
+        $query = "SELECT department,
+                    ROUND (AVG(salary), 2) as avg_salary,
+                    MAX (salary) as max_salary,
+                    MIN(salary) as min_salary
+                    FROM employees
+                    GROUP BY department
+                    ORDER BY department DESC";
+        $stmt = $this->conn->prepare($query);
+        $stmt->execute();
+        return $stmt;
+    }
 }
 ?>
